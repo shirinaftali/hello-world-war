@@ -16,10 +16,13 @@ mvn clean package'''
 
     stage('sonarqube ') {
       steps {
-        sh '''mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=shirinaftali_hello-world-war
+        sh '''mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=shirinaftali_hello-world-war -Dsonar.login=$sonar_cerd 
 '''
       }
     }
 
+  }
+  environment {
+    sonar_cerd = 'sonarqube'
   }
 }
