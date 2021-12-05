@@ -22,6 +22,6 @@ mvn clean package'''
 
   }
     environment {
-    sonar_cerd = credentials('sonarqube')
+    sonar_cerd = credentials('SONAR_TOKEN')
   }
 }
