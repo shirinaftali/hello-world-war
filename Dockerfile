@@ -1,4 +1,5 @@
-FROM ubuntu:20.04
-MAINTAINER Shiri
-RUN apt-get update
-COPY *.war /warFile/.war
+FROM tomcat
+
+COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
+
+EXPOSE 8080
