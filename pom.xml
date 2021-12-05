@@ -8,8 +8,9 @@
 	<name>Hello World Web Application Repository</name>
 	<description>Simplest possible Java Webapp</description>
 	<properties>
-          <sonar.organization>shirinaftali</sonar.organization>
-          <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	    <sonar.projectKey>shirinafta_hello-world-war</sonar.projectKey>
+            <sonar.organization>shirinaftali</sonar.organization>
+            <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         </properties>
 
 	<build>
