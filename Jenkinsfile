@@ -20,6 +20,12 @@ mvn clean package'''
       }
     }
 
+    stage('Docker Build') {
+      steps {
+        sh 'Docker Build -t helloworld:$BUILD_ID .'
+      }
+    }
+
   }
   environment {
     sonar_cerd = credentials('SONAR_TOKEN')
