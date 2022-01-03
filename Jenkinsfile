@@ -26,6 +26,14 @@ mvn clean package'''
       }
     }
 
+    stage('push to Nexus') {
+      steps {
+        sh '''docker tag helloworld:$BUILD_ID 127.0.0.1:8123/repository/local-docker/helloworld:$BUILD_ID
+docker push 127.0.0.1:8123/repository/local-docker/helloworld:$BUILD_ID
+'''
+      }
+    }
+
   }
   environment {
     sonar_cerd = credentials('SONAR_TOKEN')
