@@ -28,12 +28,23 @@ mvn clean package'''
 
     stage('push to Nexus') {
       steps {
+        withDockerRegistry(credentialsId: 'nexusConnection', url: 'http://127.0.0.1:8123/repository/local-docker/') {
         sh '''docker tag helloworld:$BUILD_ID 127.0.0.1:8123/repository/local-docker/helloworld:$BUILD_ID
 docker push 127.0.0.1:8123/repository/local-docker/helloworld:$BUILD_ID
 '''
-      }
+        }
+        }
     }
 
+  }
+  post {
+     success {
+        slackSend(message: "Build deployed successfully - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'int-project', color: '#008000')
+     }
+
+     failure {
+          slackSend(message: " Build failed - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'int-project', color: '#FF0000')
+     }
   }
   environment {
     sonar_cerd = credentials('SONAR_TOKEN')
