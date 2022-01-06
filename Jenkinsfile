@@ -3,7 +3,7 @@ pipeline {
   
 
 triggers {
-	//Query repository weekdays every four hours starting at minute 0
+	//Query repository weekdays every four hours starting at minute 0123
 pollSCM('* * * * *')
 }
 
