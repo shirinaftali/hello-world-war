@@ -28,7 +28,7 @@ mvn clean package'''
 
     stage('push to Nexus') {
       steps {
-        withDockerRegistry(credentialsId: 'nexusConnection', url: 'http://127.0.0.1:8123/repository/local-docker/') {
+        withDockerRegistry(credentialsId: 'nexus_jenkins', url: 'http://127.0.0.1:8123/repository/local-docker/') {
         sh '''docker tag helloworld:$BUILD_ID 127.0.0.1:8123/repository/local-docker/helloworld:$BUILD_ID
 docker push 127.0.0.1:8123/repository/local-docker/helloworld:$BUILD_ID
 '''
